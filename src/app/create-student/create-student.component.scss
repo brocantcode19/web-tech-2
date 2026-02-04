@@ -1,0 +1,224 @@
+// Color Palette - Matching Wireframe
+$background: #ffffff;
+$header-background: #e0e0e0;
+$input-background: #d1d1d1;
+$input-border: #d1d1d1;
+$text-primary: #1a1a1a;
+$text-label: #2a2a2a;
+$button-bg: #d1d1d1;
+$button-hover: #c0c0c0;
+
+// Typography
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+// Layout
+$form-width: 440px;
+$input-width: 215px;
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+.create-student-container {
+  min-height: 100vh;
+  background-color: $background;
+  font-family: $font-family;
+}
+
+// Header Section
+.page-header {
+  background-color: $header-background;
+  padding: $spacing-lg 0;
+  text-align: center;
+  
+  .header-title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: $text-primary;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    
+    @media (max-width: 640px) {
+      font-size: 1.5rem;
+      padding: 0 $spacing-md;
+    }
+  }
+}
+
+// Main Content
+.main-content {
+  max-width: $form-width;
+  margin: 0 auto;
+  padding: $spacing-xl $spacing-md;
+  
+  @media (max-width: 640px) {
+    padding: $spacing-lg $spacing-md;
+  }
+}
+
+// Form Styling
+.student-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  @media (max-width: 640px) {
+    align-items: stretch;
+  }
+}
+
+.form-group {
+  margin-bottom: $spacing-lg;
+  width: 100%;
+  
+  &:last-of-type {
+    margin-bottom: $spacing-xl;
+  }
+  
+  @media (max-width: 640px) {
+    margin-bottom: $spacing-md;
+  }
+}
+
+.form-label {
+  display: block;
+  margin-bottom: $spacing-sm;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: $text-label;
+  line-height: 1.5;
+}
+
+.form-input {
+  width: $input-width;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.9375rem;
+  font-family: $font-family;
+  color: $text-primary;
+  background-color: $input-background;
+  border: none;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+  
+  &::placeholder {
+    color: transparent;
+  }
+  
+  &:focus {
+    outline: none;
+    background-color: #c7c7c7;
+  }
+  
+  &:hover:not(:focus) {
+    background-color: #cccccc;
+  }
+  
+  // Remove spinner arrows from number inputs
+  &[type="number"] {
+    -moz-appearance: textfield;
+    
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  
+  // Select dropdown styling
+  &[type="select"] {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23333' d='M5 6L0 0h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 10px;
+    padding-right: 2rem;
+    
+    option {
+      background-color: $background;
+      color: $text-primary;
+    }
+  }
+}
+
+select.form-input {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23333' d='M5 6L0 0h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 10px;
+  padding-right: 2rem;
+  
+  option {
+    background-color: $background;
+    color: $text-primary;
+  }
+}
+
+// Form Actions (Buttons)
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+  width: 100%;
+  
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+}
+
+.btn-back,
+.btn-submit {
+  padding: 0.625rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: $font-family;
+  background-color: $button-bg;
+  color: $text-primary;
+  
+  @media (max-width: 480px) {
+    width: 100%;
+  }
+  
+  &:hover {
+    background-color: $button-hover;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+// Remove validation states to match wireframe simplicity
+.form-input:invalid:not(:placeholder-shown),
+.form-input:valid:not(:placeholder-shown) {
+  border-color: transparent;
+}
+
+// Loading state for submit button
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  
+  &:hover {
+    background-color: $button-bg;
+  }
+}
