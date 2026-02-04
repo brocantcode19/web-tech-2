@@ -1,12 +1,14 @@
-// Color Palette - Matching Wireframe
+// Color Palette - Matching Wave Design
+$primary-color: #5b67ca;
+$primary-hover: #4850b5;
 $background: #ffffff;
-$header-background: #e0e0e0;
+$header-background: rgba(94, 97, 88, 0.95);
 $input-background: #d1d1d1;
 $input-border: #d1d1d1;
 $text-primary: #1a1a1a;
-$text-label: #2a2a2a;
-$button-bg: #d1d1d1;
-$button-hover: #c0c0c0;
+$text-label: #000000;
+$button-bg: #94df7ea1;
+$button-hover: #fc7777;
 
 // Typography
 $font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -22,8 +24,32 @@ $spacing-xl: 2rem;
 
 .create-student-container {
   min-height: 100vh;
-  background-color: $background;
+  position: relative;
   font-family: $font-family;
+  overflow: hidden;
+}
+
+// Background Image
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/form.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+// Content Wrapper
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 // Header Section
@@ -31,6 +57,7 @@ $spacing-xl: 2rem;
   background-color: $header-background;
   padding: $spacing-lg 0;
   text-align: center;
+  backdrop-filter: blur(10px);
   
   .header-title {
     margin: 0;
@@ -49,7 +76,12 @@ $spacing-xl: 2rem;
 
 // Main Content
 .main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-width: $form-width;
+  width: 100%;
   margin: 0 auto;
   padding: $spacing-xl $spacing-md;
   
@@ -60,12 +92,20 @@ $spacing-xl: 2rem;
 
 // Form Styling
 .student-form {
+  width: 100%;
+  background-color: rgba(105, 110, 95, 0.95);
+  padding: $spacing-xl;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   
   @media (max-width: 640px) {
     align-items: stretch;
+    padding: $spacing-lg;
+    border-radius: 0.75rem;
   }
 }
 
@@ -196,6 +236,8 @@ select.form-input {
   
   &:hover {
     background-color: $button-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   &:active {
@@ -220,5 +262,14 @@ select.form-input {
   
   &:hover {
     background-color: $button-bg;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 640px) {
+  .background-image {
+    background-position: center;
   }
 }
