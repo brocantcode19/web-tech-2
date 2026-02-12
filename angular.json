@@ -3,7 +3,7 @@
   "version": 1,
   "cli": {
     "packageManager": "npm",
-    "analytics": "474abe35-b8f3-45c4-8c5e-965a806277d8"
+    "analytics": false
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -32,6 +32,9 @@
             ],
             "styles": [
               "src/styles.scss"
+            ],
+            "polyfills": [
+              "zone.js"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",

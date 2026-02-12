@@ -6,7 +6,15 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Client
   },
   {
-    path: 'students/create',
+    path: 'create-student',
+    renderMode: RenderMode.Client
+  },
+  {
+    path: 'activity-1',
+    renderMode: RenderMode.Client
+  },
+  {
+    path: 'prelim-exam',
     renderMode: RenderMode.Client
   },
   {
