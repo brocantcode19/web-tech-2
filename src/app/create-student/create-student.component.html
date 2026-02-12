@@ -1,48 +1,42 @@
 <div class="create-student-container">
   <div class="background-image"></div>
-  
+
   <div class="content-wrapper">
     <header class="page-header">
       <h1 class="header-title">HEADER LABEL</h1>
     </header>
 
     <main class="main-content">
-      <form class="student-form" (ngSubmit)="onSubmit()">
-        
+      <form class="student-form" [formGroup]="form" (ngSubmit)="createStudent()">
+
         <div class="form-group">
-          <label for="studentId" class="form-label">Student ID</label>
+          <label for="first_name" class="form-label">First Name</label>
           <input
             type="text"
-            id="studentId"
-            name="studentId"
+            id="first_name"
             class="form-input"
-            [(ngModel)]="studentForm.studentId"
-            required
+            formControlName="first_name"
           />
+          @if (form.controls.first_name.touched && form.controls.first_name.errors) {
+            @if (form.controls.first_name.errors['required']) {
+              <span class="error-message">First name is required.</span>
+            }
+          }
         </div>
 
         <div class="form-group">
-          <label for="firstName" class="form-label">First Name</label>
+          <label for="last_name" class="form-label">Last Name</label>
           <input
             type="text"
-            id="firstName"
-            name="firstName"
+            id="last_name"
             class="form-input"
-            [(ngModel)]="studentForm.firstName"
-            required
+            formControlName="last_name"
           />
-        </div>
-
-        <div class="form-group">
-          <label for="lastName" class="form-label">Last Name</label>
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            class="form-input"
-            [(ngModel)]="studentForm.lastName"
-            required
-          />
+          @if (form.controls.last_name.touched && form.controls.last_name.errors) {
+            @if (form.controls.last_name.errors['required']) {
+              <span class="error-message">Last name is required.</span>
+            }
+          }
         </div>
 
         <div class="form-group">
@@ -50,11 +44,17 @@
           <input
             type="email"
             id="email"
-            name="email"
             class="form-input"
-            [(ngModel)]="studentForm.email"
-            required
+            formControlName="email"
           />
+          @if (form.controls.email.touched && form.controls.email.errors) {
+            @if (form.controls.email.errors['required']) {
+              <span class="error-message">Email is required.</span>
+            }
+            @if (form.controls.email.errors['email']) {
+              <span class="error-message">Please enter a valid email.</span>
+            }
+          }
         </div>
 
         <div class="form-group">
@@ -62,13 +62,47 @@
           <input
             type="number"
             id="age"
-            name="age"
             class="form-input"
-            [(ngModel)]="studentForm.age"
+            formControlName="age"
             min="1"
             max="100"
-            required
           />
+          @if (form.controls.age.touched && form.controls.age.errors) {
+            @if (form.controls.age.errors['required']) {
+              <span class="error-message">Age is required.</span>
+            }
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="course" class="form-label">Course</label>
+          <input
+            type="text"
+            id="course"
+            class="form-input"
+            formControlName="course"
+          />
+          @if (form.controls.course.touched && form.controls.course.errors) {
+            @if (form.controls.course.errors['required']) {
+              <span class="error-message">Course is required.</span>
+            }
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="year_level" class="form-label">Year Level</label>
+          <input
+            type="number"
+            id="year_level"
+            class="form-input"
+            formControlName="year_level"
+            min="1"
+          />
+          @if (form.controls.year_level.touched && form.controls.year_level.errors) {
+            @if (form.controls.year_level.errors['required']) {
+              <span class="error-message">Year level is required.</span>
+            }
+          }
         </div>
 
         <div class="form-group">
@@ -76,37 +110,21 @@
           <input
             type="number"
             id="gpa"
-            name="gpa"
             class="form-input"
-            [(ngModel)]="studentForm.gpa"
+            formControlName="gpa"
             step="0.01"
             min="0"
             max="4.0"
-            required
           />
-        </div>
-
-        <div class="form-group">
-          <label for="enrollmentStatus" class="form-label">Enrollment Status</label>
-          <select
-            id="enrollmentStatus"
-            name="enrollmentStatus"
-            class="form-input"
-            [(ngModel)]="studentForm.enrollmentStatus"
-            required
-          >
-            <option value="" disabled selected></option>
-            <option *ngFor="let status of enrollmentStatuses" [value]="status">
-              {{ status }}
-            </option>
-          </select>
+          @if (form.controls.gpa.touched && form.controls.gpa.errors) {
+            @if (form.controls.gpa.errors['required']) {
+              <span class="error-message">GPA is required.</span>
+            }
+          }
         </div>
 
         <div class="form-actions">
-          <button type="button" class="btn-back" (click)="onBack()">
-            Back
-          </button>
-          <button type="submit" class="btn-submit">
+          <button type="submit" class="btn-submit" (click)="createStudent()">
             Create student
           </button>
         </div>

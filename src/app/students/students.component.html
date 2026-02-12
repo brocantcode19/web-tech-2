@@ -1,27 +1,9 @@
-<div class="students-container">
-  <header class="page-header">
-    <h1 class="header-title">Student Management System</h1>
-  </header>
+@for (student of students(); track student.id) {
+  <div class="student-card">
+    <p>{{ student.first_name }} {{ student.last_name }}</p>
+    <button (click)="deleteStudent(student.id)">Delete</button>
+  </div>
+} @empty {
+  <span>No students found</span>
+}
 
-  <main class="main-content">
-    <div class="content-header">
-      <h2 class="section-title">List of Students</h2>
-      <button class="btn-add-student" (click)="navigateToAddStudent()">
-        Add student
-      </button>
-    </div>
-
-    <div class="students-list">
-      <article class="student-card" *ngFor="let student of students">
-        <div class="student-info">
-          <h3 class="student-name">{{ student.name }}</h3>
-          <p class="student-course">{{ student.course }}</p>
-          <p class="student-year">{{ student.yearLevel }}</p>
-        </div>
-        <button class="btn-delete" (click)="deleteStudent(student.id)">
-          delete
-        </button>
-      </article>
-    </div>
-  </main>
-</div>
